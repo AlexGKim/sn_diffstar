@@ -34,8 +34,9 @@ The DTD has the form
              A \left(\frac{\tau}{\mathrm{Gyr}} \right)^\beta  & if $\tau \geq t_p$ 
           \end{cases*}.
 \end{equation}
-Then a useful expression is
-\begin{equation}
-R_G=\frac{A}{1+\beta}  \left(\frac{1}{\mathrm{Gyr}} \right)^\beta \int_{t_p}^{\infty} \psi(\tau+t_0) d(\tau^{1+\beta}).
-\end{equation}
+Then a useful expression for efficient calculation of the integral is
+\begin{align}
+R_G &= \frac{1}{1+\beta}  \int_{0}^{\infty} \psi(\tau+t_0)  \phi(\tau)\tau^{-\beta}  d(\tau^{1+\beta}). \\
+ &= \frac{A}{1+\beta}  \left(\frac{1}{\mathrm{Gyr}} \right)^\beta \int_{t_p}^{\infty} \psi(\tau+t_0) d(\tau^{1+\beta}).
+ \end{align}
 \end{document}  
