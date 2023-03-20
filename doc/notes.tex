@@ -21,17 +21,21 @@
 \maketitle
 %\section{}
 %\subsection{}
-The SN rate per galaxy is
+The SN rate for a galaxy at a lookback time $t_0$ is
 \begin{equation}
-R_G=\int_{t_0}^{t_f} \psi(\tau-t_0) \phi(\tau),
+R_G=\int_{0}^{\infty} \psi(\tau+t_0) \phi(\tau) d\tau,
 \end{equation}
-$\psi$ is the SFH, $\phi$ is the DTD.  The time is in lookback time, the opposite of Wiseman et al., hence the slight difference with their Eq.\ 7.
+$\psi$ is the SFH, $\phi$ is the DTD.  The time is in lookback time.
 The DTD has the form
 \begin{equation}
 \phi(\tau) =  
 \begin{cases*} 
             0  &  if $\tau < t_p$  \\
              A \left(\frac{\tau}{\mathrm{Gyr}} \right)^\beta  & if $\tau \geq t_p$ 
-          \end{cases*}
+          \end{cases*}.
+\end{equation}
+Then a useful expression is
+\begin{equation}
+R_G=\frac{A}{1+\beta}  \left(\frac{1}{\mathrm{Gyr}} \right)^\beta \int_{t_p}^{\infty} \psi(\tau+t_0) d(\tau^{1+\beta}).
 \end{equation}
 \end{document}  
