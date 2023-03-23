@@ -27,4 +27,6 @@ SNR_t0  = jjit(vmap(SNR,  in_axes=(0, None, None, None, None)))
 SNR_mah  = jjit(vmap(SNR,  in_axes=(None, None, None, None, 0)))
 SNR_gal  = jjit(vmap(SNR,  in_axes=(0, None, None, None, 0)))
 SNR_t0_mah  = jjit(vmap(SNR_mah,  in_axes=(0, None, None, None, None)))
-
+SNR_beta  = jjit(vmap(SNR,  in_axes=(None, None, 0, None, None)))
+SNR_tp  = jjit(vmap(SNR,  in_axes=(None, None, None, 0, None)))
+SNR_beta_tp  = jjit(vmap(SNR_tp,  in_axes=(None, None, 0, None, None)))
