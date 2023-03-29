@@ -21,7 +21,7 @@ beta = -1.13
 def SNR(t0, A, beta, tp, mah_params_one):
     mah_params_pop=mah_params_one[None,:]
     
-    taus_p = jnp.linspace(jnp.power(tp, beta+1), jnp.power(t0, beta+1), 1000)
+    taus_p = jnp.linspace(jnp.power(tp, beta+1), jnp.power(t0, beta+1), 200)
     taus = jnp.power(taus_p, -(beta+1))
     
     lgmpop = mah_params_pop[:,0]
