@@ -50,3 +50,8 @@ def logSM(t0, mah_params_one):
     ms_logsmh_pop = jnp.log10(ms_smh_pop)
 #     _, ms_sfh_pop, _ = mc_galhalo_ms_lgmpop(ran_key, mah_params_pop, taus+t0)
     return ms_logsmh_pop[0,-1]
+
+logSM_t0  = jjit(vmap(logSM,  in_axes=(0, None)))
+logSM_mah  = jjit(vmap(logSM,  in_axes=(None, 0)))
+logSM_gal  = jjit(vmap(logSM,  in_axes=(0, 0)))
+logSM_t0_mah  = jjit(vmap(logSM_mah,  in_axes=(0, None)))
