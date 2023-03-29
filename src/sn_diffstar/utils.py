@@ -6,6 +6,17 @@ from diffstar.utils import _jax_get_dt_array
 
 from sn_diffstar.mspop import _ms_means_and_covs_lgmpop, _get_ms_means, get_ms_sfh_scan_tobs_lgm0, _integrate_sfrpop, SFR_MIN
 
+## DTD Model from Eq. 6 Wiseman et al. 2021 https://academic.oup.com/mnras/article/506/3/3330/6318383?login=false
+## Their nominal values are
+
+tp=0.04 # Gyr
+A = 2.11e-13 # / M_star / yr
+beta = -1.13
+
+## SFH history units pf M_star/yr
+
+## SNR returns 1/yr
+
 @jjit
 def SNR(t0, A, beta, tp, mah_params_one):
     mah_params_pop=mah_params_one[None,:]
@@ -22,7 +33,9 @@ def SNR(t0, A, beta, tp, mah_params_one):
     ms_sfh_pop = jnp.where(ms_sfh_pop < SFR_MIN, SFR_MIN, ms_sfh_pop)
 
 #     _, ms_sfh_pop, _ = mc_galhalo_ms_lgmpop(ran_key, mah_params_pop, taus+t0)
-    return 1./(1+beta)*A*jnp.trapz(ms_sfh_pop[0,:],taus_p)
+
+    # 1e9 since t0 units in Gyr, SFH units in yr
+    return 1e9/(1+beta)*A*jnp.trapz(ms_sfh_pop[0,:],taus_p)
 
 SNR_t0  = jjit(vmap(SNR,  in_axes=(0, None, None, None, None)))
 SNR_mah  = jjit(vmap(SNR,  in_axes=(None, None, None, None, 0)))
