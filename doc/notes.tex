@@ -21,11 +21,13 @@
 \maketitle
 %\section{}
 %\subsection{}
-The SN rate for a galaxy at a lookback time $t_0$ is
-\begin{equation}
-R_G=\int_{0}^{\infty} \psi(\tau+t_0) \phi(\tau) d\tau,
-\end{equation}
-$\psi$ is the SFH, $\phi$ is the DTD.  The time is in lookback time.
+The SN rate for a galaxy at a cosmic time $t_0$ is
+\begin{align}
+R_G &= \int_{0}^{\infty} \psi(\tau) \phi(t_0-\tau) d\tau \\
+ &= \int_{-\infty}^{t_0} \psi(t_0-\tau) \phi(\tau) d\tau,
+\end{align}
+$\psi$ is the SFH, $\phi$ is the DTD. 
+The SFH is a function of cosmic time (since the big bang).
 The DTD has the form
 \begin{equation}
 \phi(\tau) =  
@@ -36,7 +38,7 @@ The DTD has the form
 \end{equation}
 Then a useful expression for efficient calculation of the integral is
 \begin{align}
-R_G &= \frac{1}{1+\beta}  \int_{0}^{\infty} \psi(\tau+t_0)  \phi(\tau)\tau^{-\beta}  d(\tau^{1+\beta}). \\
- &= \frac{A}{1+\beta}  \left(\frac{1}{\mathrm{Gyr}} \right)^\beta \int_{t_p}^{\infty} \psi(\tau+t_0) d(\tau^{1+\beta}).
+R_G &= \frac{1}{1+\beta}  \int_{-\infty}^{t_0} \psi(t_0-\tau)  \phi(\tau)\tau^{-\beta}  d(\tau^{1+\beta}). \\
+ &= \frac{A}{1+\beta}  \left(\frac{1}{\mathrm{Gyr}} \right)^\beta \int_{t_p}^{t_0} \psi(t_0-\tau) d(\tau^{1+\beta}).
  \end{align}
 \end{document}  
