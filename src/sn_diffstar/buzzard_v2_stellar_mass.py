@@ -53,6 +53,6 @@ if __name__=='__main__':
     coeffs = training_galaxies['COEFFS'][galaxies['SEDID']]
     mag_r_train = training_galaxies['ABSMAG'][galaxies['SEDID'],2] 
     
-    coeffs *= 10 ** ((galaxies['MAG_R'] - mag_r_train.reshape(-1, 1)) / -2.5)
+    coeffs *= 10 ** ((galaxies['MAG_R'][:,np.newaxis] - mag_r_train[:,np.newaxis]) / -2.5)
     
     sfr, met, smass = get_derived_quantities(kfile,coeffs,galaxies['Z'], cosmo)
